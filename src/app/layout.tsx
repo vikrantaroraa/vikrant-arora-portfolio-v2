@@ -1,7 +1,9 @@
 import "@component/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
+import { Inter, Calistoga } from "next/font/google";
 import { type Metadata } from "next";
+import { twMerge } from "tailwind-merge";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -9,12 +11,27 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const calistoga = Calistoga({
+  subsets: ["latin"],
+  variable: "--font-serif",
+  weight: ["400"],
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body>{children}</body>
+      <body
+        className={twMerge(
+          inter.variable,
+          calistoga.variable,
+          "bg-gray-900 font-sans text-white antialiased",
+        )}
+      >
+        {children}
+      </body>
     </html>
   );
 }

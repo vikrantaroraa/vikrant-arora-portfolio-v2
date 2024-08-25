@@ -6,7 +6,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-geist-sans)", ...fontFamily.sans],
+        // sans: ["var(--font-geist-sans)", ...fontFamily.sans],
+        sans: ["var(--font-sans)"],
+        serif: ["var(--font-serif)"],
       },
     },
   },
