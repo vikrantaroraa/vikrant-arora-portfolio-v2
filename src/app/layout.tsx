@@ -1,4 +1,4 @@
-import "@component/styles/globals.css";
+import "@/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
 import { Inter, Calistoga } from "next/font/google";

@@ -1,4 +1,5 @@
-import { Header } from "@component/sections/Header";
+import { Header } from "@/sections/Header";
+import { HeroSection } from "@/sections/HeroSection";
 import Link from "next/link";
 
 export default function HomePage() {
@@ -36,6 +37,7 @@ export default function HomePage() {
     // </main>
     <div>
       <Header />
+      <HeroSection />
     </div>
   );
 }
