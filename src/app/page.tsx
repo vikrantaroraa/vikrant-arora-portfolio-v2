@@ -1,5 +1,8 @@
 import { Header } from "@/sections/Header";
 import { HeroSection } from "@/sections/HeroSection";
+import { ProjectsSection } from "@/sections/Projects";
+import { TapeSection } from "@/sections/Tape";
+import { TestimonialsSection } from "@/sections/Testimonials";
 import Link from "next/link";
 
 export default function HomePage() {
@@ -38,6 +41,9 @@ export default function HomePage() {
     <div>
       <Header />
       <HeroSection />
+      <ProjectsSection />
+      <TapeSection />
+      <TestimonialsSection />
     </div>
   );
 }
