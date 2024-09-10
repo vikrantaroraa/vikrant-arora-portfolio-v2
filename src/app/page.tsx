@@ -1,5 +1,6 @@
 import { AboutSection } from "@/sections/About";
 import { ContactSection } from "@/sections/Contact";
+import { Footer } from "@/sections/Footer";
 import { Header } from "@/sections/Header";
 import { HeroSection } from "@/sections/HeroSection";
 import { ProjectsSection } from "@/sections/Projects";
@@ -48,6 +49,7 @@ export default function HomePage() {
       <TestimonialsSection />
       <AboutSection />
       <ContactSection />
+      <Footer />
     </div>
   );
 }
