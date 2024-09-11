@@ -6,6 +6,7 @@ import memojiAvatar5 from "@/assets/images/memoji-avatar-5.png";
 import SectionHeader from "@/Components/SectionHeader";
 import Image from "next/image";
 import Card from "@/Components/Card";
+import { Fragment } from "react";
 
 const testimonials = [
   {
@@ -51,26 +52,40 @@ export const TestimonialsSection = () => {
         work."
         />
 
-        <div className="mt-16 flex overflow-x-clip [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] lg:mt-24">
-          <div className="flex flex-none gap-8">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="max-w-xs p-6 md:max-w-md md:p-8">
-                <div className="flex items-center gap-4">
-                  <div className="flex size-14 flex-shrink-0 items-center justify-center rounded-full bg-gray-700">
-                    <Image src={testimonial.avatar} alt={testimonial.name} />
-                  </div>
-                  <div>
-                    <div className="font-semibold">{testimonial.name}</div>
-                    <div className="text-sm text-white/40">
-                      {testimonial.position}
-                    </div>
-                  </div>
-                </div>
-                <p className="mt-4 text-sm md:mt-6 md:text-base">
-                  {testimonial.text}
-                </p>
-              </Card>
-            ))}
+        <div className="mt-12 flex overflow-x-clip py-4 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] lg:mt-20">
+          <div className="animate-move-left flex flex-none gap-8 pr-8 [animation-duration:90s] hover:[animation-play-state:paused]">
+            {[...new Array(2)].fill(0).map((_, index) => {
+              return (
+                <Fragment key={index}>
+                  {testimonials.map((testimonial, index) => (
+                    <Card
+                      key={index}
+                      className="max-w-xs p-6 duration-300 hover:-rotate-3 md:max-w-md md:p-8"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="flex size-14 flex-shrink-0 items-center justify-center rounded-full bg-gray-700">
+                          <Image
+                            src={testimonial.avatar}
+                            alt={testimonial.name}
+                          />
+                        </div>
+                        <div>
+                          <div className="font-semibold">
+                            {testimonial.name}
+                          </div>
+                          <div className="text-sm text-white/40">
+                            {testimonial.position}
+                          </div>
+                        </div>
+                      </div>
+                      <p className="mt-4 text-sm md:mt-6 md:text-base">
+                        {testimonial.text}
+                      </p>
+                    </Card>
+                  ))}
+                </Fragment>
+              );
+            })}
           </div>
         </div>
       </div>

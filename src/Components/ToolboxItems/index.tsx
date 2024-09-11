@@ -1,5 +1,5 @@
 import TechIcon from "@/Components/TechIcon";
-import React, { ElementType } from "react";
+import React, { ElementType, Fragment } from "react";
 import { twMerge } from "tailwind-merge";
 
 interface ToolboxItem {
@@ -31,15 +31,21 @@ const ToolboxItems = ({
           itemsWrapperClassName,
         )}
       >
-        {items.map((item) => (
-          <div
-            key={item.title}
-            className="inline-flex items-center gap-4 rounded-lg px-3 py-2 outline outline-2 outline-white/10"
-          >
-            <TechIcon component={item.iconType} />
-            <span className="font-semibold">{item.title}</span>
-          </div>
-        ))}
+        {[...new Array(2)].fill(0).map((_, index) => {
+          return (
+            <Fragment key={index}>
+              {items.map((item) => (
+                <div
+                  key={item.title}
+                  className="inline-flex items-center gap-4 rounded-lg px-3 py-2 outline outline-2 outline-white/10"
+                >
+                  <TechIcon component={item.iconType} />
+                  <span className="font-semibold">{item.title}</span>
+                </div>
+              ))}
+            </Fragment>
+          );
+        })}
       </div>
     </div>
   );

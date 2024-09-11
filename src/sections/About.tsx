@@ -1,3 +1,4 @@
+"use client";
 import Card from "@/Components/Card";
 import SectionHeader from "@/Components/SectionHeader";
 import bookImage from "@/assets/images/book-cover.png";
@@ -12,6 +13,8 @@ import mapImage from "@/assets/images/map.png";
 import smileEmoji from "@/assets/images/memoji-smile.png";
 import CardHeader from "@/Components/CardHeader";
 import ToolboxItems from "@/Components/ToolboxItems";
+import { motion } from "framer-motion";
+import { useRef } from "react";
 
 const toolboxItems = [
   { title: "JavaScript", iconType: JavaScriptIcon },
@@ -33,6 +36,8 @@ const hobbies = [
 ];
 
 export const AboutSection = () => {
+  const dragContraintRef = useRef(null);
+
   return (
     <div className="py-20 lg:py-28">
       <div className="container">
@@ -59,11 +64,15 @@ export const AboutSection = () => {
                 exceptional digital experiences."
                 className=""
               />
-              <ToolboxItems items={toolboxItems} className="" />
+              <ToolboxItems
+                items={toolboxItems}
+                className=""
+                itemsWrapperClassName="animate-move-left [animation-duration:30s]"
+              />
               <ToolboxItems
                 items={toolboxItems}
                 className="mt-6"
-                itemsWrapperClassName="-translate-x-1/2"
+                itemsWrapperClassName="animate-move-right [animation-duration:20s]"
               />
             </Card>
           </div>
@@ -74,18 +83,20 @@ export const AboutSection = () => {
                 description="Explore the interests and hobbies beyond the digital realm."
                 className="px-6 py-6"
               />
-              <div className="relative flex-1">
+              <div className="relative flex-1" ref={dragContraintRef}>
                 {hobbies.map((hobbby, index) => (
-                  <div
+                  <motion.div
                     key={index}
                     className="absolute inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-300 to-sky-400 px-6 py-1.5"
                     style={{ left: hobbby.left, top: hobbby.top }}
+                    drag
+                    dragConstraints={dragContraintRef}
                   >
                     <span className="font-medium text-gray-950">
                       {hobbby.title}
                     </span>
                     <span>{hobbby.emoji}</span>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </Card>
@@ -95,7 +106,9 @@ export const AboutSection = () => {
                 alt="map-image"
                 className="h-full w-full object-cover object-left-top"
               />
-              <div className="absolute left-1/2 top-1/2 size-20 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-r from-emerald-300 to-sky-400 after:absolute after:inset-0 after:rounded-full after:outline after:outline-2 after:-outline-offset-2 after:outline-gray-950/30 after:content-['']">
+              <div className="absolute left-1/2 top-1/2 size-20 -translate-x-1/2 -translate-y-1/2 rounded-full after:absolute after:inset-0 after:rounded-full after:outline after:outline-2 after:-outline-offset-2 after:outline-gray-950/30 after:content-['']">
+                <div className="absolute inset-0 -z-20 animate-ping rounded-full bg-gradient-to-r from-emerald-300 to-sky-400 [animation-duration:2s]"></div>
+                <div className="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-emerald-300 to-sky-400"></div>
                 <Image
                   src={smileEmoji}
                   alt="smiling emoji"
